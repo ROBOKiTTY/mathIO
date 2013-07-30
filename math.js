@@ -9,11 +9,7 @@ var square = function(a){
 };
 //This checks if the input is a decimal
 var isdecimal = function(i){
-    if(i % 1 != 0){
-        return true;
-    }else{
-        return false;
-    }
+    return (i % 1) != 0;
 };
 //Gets the sum of numbers in a array
 var e = function(array){
@@ -29,11 +25,8 @@ var e = function(array){
 //This will tell you if the shape will tessellate based on the number of sides
 var shape_tessellate = function(s){
     res = 360/(((s-2)*180)/s);
-    if (res % 1 == 0) {
-        return true;
-    }else{
-        return false;
-    }
+    
+    return !(res % 1);
 };
 
 
