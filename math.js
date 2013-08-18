@@ -47,7 +47,7 @@ var getx = function(a, b){
 //a = {a:1, b:2, c:3, type:"SSS"};
 var congruent = function(a, b){
 	if((a.a == b.a || a.a == b.b || a.a == b.c) && (a.b == b.a || a.b == b.b || a.b == b.c) && (a.c == b.a || a.c == b.b || a.c == b.c)
-	   && (a.type = b.type)){
+	   && (a.type == b.type)){
 		return true;
 	}else{
 		return false;
@@ -92,30 +92,28 @@ var getcirclearea = function(r){
 //This will get the upper bound of the input numbers. It currently only supports whole numbers.
 //numbers = ['1', '4', '5']
 var upperbound = function(numbers){
-	var f = '';
-	for (var i = 0; i <= numbers.length; i++){
-		numbers[i] = numbers[i] + 0.5;
-		if(i == numbers.length){
-			f += numbers[i];
-		}else{
-			f += numbers[i]+' *';
+	var upper = undefined;
+	for (var i = 0; i < numbers.length; ++i) {
+		var current = parseInt(numbers[i], 10);
+		if (current > upper || !upper) {
+			upper = current;
 		}
 	}
-	return eval(f);
+	
+	return upper;
 }
 //This will get the lower bound of the input numbers. It currently only supports whole numbers.
 //numbers = ['1', '4', '5']
 var lowerbound = function(numbers){
-	var f = '';
-	for (var i = 0; i <= numbers.length; i++){
-		numbers[i] = numbers[i] - 0.5;
-		if(i == numbers.length){
-			f += numbers[i];
-		}else{
-			f += numbers[i]+' +';
+	var lower = undefined;
+	for (var i = 0; i < numbers.length; ++i) {
+		var current = parseInt(numbers[i], 10);
+		if (current < lower || !lower) {
+			lower = current;
 		}
 	}
-	return eval(f);
+	
+	return lower;
 }
 module.exports = {
     square : square,
